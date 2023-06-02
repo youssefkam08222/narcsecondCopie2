@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "755522027500",
+    "project_id": "narcimages",
+    "storage_bucket": "narcimages.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:755522027500:android:8b371a45953eaf78720ac9",
+        "android_client_info": {
+          "package_name": "tn.narc.narcsecond"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "755522027500-8ev65knnoi0vm3ipcoh6ud7r3ud0n8lc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz42ZzlSNTEHZ8RbxynKtN9M88R01kqjY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "755522027500-8ev65knnoi0vm3ipcoh6ud7r3ud0n8lc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "755522027500-b6s7j05rftck6i7k41cv2dh9s8eheo2j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "tn.narc.narcsecond"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
