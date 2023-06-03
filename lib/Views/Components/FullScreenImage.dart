@@ -109,11 +109,13 @@ class FullScreenImage extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Hero(
-          tag: imageUrl, // Same tag as in the previous code
-          child: Image.network(
-            imageUrl,
-            fit: BoxFit.contain,
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: InteractiveViewer(
+            child: Image.network(
+              imageUrl,
+              fit: BoxFit.contain, // Adjust the image to fit within the container
+            ),
           ),
         ),
       ),

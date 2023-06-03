@@ -143,7 +143,7 @@ class _VoitureWidgetState extends State<VoitureWidget> {
                                           color: Colors.black),
                                       Text(
                                         "  ${snapshot.data![index]
-                                            .voitureKilometrage
+                                            .voitureKilometrage.toString()
                                             .replaceAllMapped(
                                             RegExp(r".{0}"), (match) => "${match
                                             .group(0)} ")} KLM",

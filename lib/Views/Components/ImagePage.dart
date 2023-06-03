@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../Models/firebase_file.dart';
@@ -14,7 +13,7 @@ class ImagePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("file= "+file.name);
+    print("file= " + file.name);
     final isImage = ['.jpeg', '.jpg', '.png'].any(file.name.contains);
 
     return Scaffold(
@@ -37,12 +36,16 @@ class ImagePage extends StatelessWidget {
         ],
       ),
       body: isImage
-          ? Image.network(
-        file.url,
-        height: double.infinity,
-        fit: BoxFit.cover,
+          ? GestureDetector(
+        child: InteractiveViewer(
+          child: Image.network(
+            file.url,
+            height: double.maxFinite,
+            fit: BoxFit.cover,
+          ),
+        ),
       )
-          : Center(
+          : const Center(
         child: Text(
           'Cannot be displayed',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),

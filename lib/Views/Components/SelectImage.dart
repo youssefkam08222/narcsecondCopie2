@@ -108,7 +108,7 @@ Future<File> getImageFile (context) async{
 
 Future<File?> selectImageFromGallery() async {
   XFile? file = await ImagePicker()
-      .pickImage(source: ImageSource.gallery, imageQuality: 10);
+      .pickImage(source: ImageSource.gallery, imageQuality: 100);
   final File imageFile = File(file!.path);
   if (file != null) {
     final String imagePath = imageFile.path;
