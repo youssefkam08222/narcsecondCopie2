@@ -15,7 +15,7 @@ class VoitureModel {
   String voitureTypeSerie ;
   String voitureSerie ;
   String voitureCarburant ;
-  String voitureKilometrage ;
+  int voitureKilometrage ;
   String voitureNotes ;
   String imgFaceCarteGriseUrl ;
   String imgDosCarteGriseUrl ;
@@ -86,7 +86,7 @@ class VoitureModel {
   String get voituretypeserie => voitureTypeSerie;
   String get voitureserie => voitureSerie;
   String get voiturecarburant => voitureCarburant;
-  String get voiturekilometrage => voitureKilometrage;
+  int get voiturekilometrage => voitureKilometrage;
   String get voiturenotes => voitureNotes;
   String get imgfacecartegriseurl => imgFaceCarteGriseUrl;
   String get imgdoscartegriseurl => imgDosCarteGriseUrl;

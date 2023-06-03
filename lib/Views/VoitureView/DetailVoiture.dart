@@ -11,6 +11,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:narcsecond/Views/VoitureView/UpdateVoiture.dart';
 import '../../Models/firebase_file.dart';
 import '../../Services/firebase_api.dart';
+import '../../Services/voitureService.dart';
 import '../AlertDialog/ConfirmAlertDialog.dart';
 import '../Components/FullScreenImage.dart';
 import '../Components/Toast.dart';
@@ -39,7 +40,7 @@ class DetailVoitureState extends State<DetailVoiture> {
       voitureSerie: "",
       voitureCarburant: "",
       voitureNotes: "",
-      voitureKilometrage: "",
+      voitureKilometrage: 0,
       imgFaceCarteGriseUrl: "",
       imgDosCarteGriseUrl: "",
       imgAssuranceUrl: "",
@@ -110,30 +111,17 @@ class DetailVoitureState extends State<DetailVoiture> {
         title: Text("Détail de votre voiture"),
         actions: <Widget>[
           PopupMenuButton(
-            onSelected: (value) {
+            onSelected: (value) async {
               if (value == AppBarOptions.update.index) {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => updateVoiture(voiture)));
               } else if (value == AppBarOptions.delete.index) {
-
-                  showDialog(
-                    context: context,
-                    barrierDismissible: true,
-                    builder: (BuildContext dialogContext) {
-                      return ConfirmAlertDialog(
-                          title: "Supprimer voiture",
-                          content: "Est ce que vous etes sur de supprimer cette voiture ?",
-                          voiture:voiture,
-                          voitureContext:context,
-                        icon: const Icon(Icons.delete_forever,color: Colors.red,),
-
-                      );
-                    },
-                  );
-
-
+                bool? userChoice= await confirmAlertDialog("Supprimer voiture", "Est ce que vous etes sur de supprimer cette voiture ?", context);
+                if (userChoice == true) {
+                  deleteVoiture(voiture,context);
+                }
               }
             },
             offset: Offset(0.0, AppBar().preferredSize.height),
@@ -329,7 +317,7 @@ class DetailVoitureState extends State<DetailVoiture> {
                                               'assets/images/barometer1.png'),
                                           color: Colors.black),
                                       Text(
-                                        "  ${voiture.voitureKilometrage.replaceAllMapped(RegExp(r".{0}"), (match) => "${match.group(0)} ")} KLM",
+                                        "  ${voiture.voitureKilometrage.toString().replaceAllMapped(RegExp(r".{0}"), (match) => "${match.group(0)} ")} KLM",
                                         style: Theme.of(context)
                                             .textTheme
                                             .titleMedium!

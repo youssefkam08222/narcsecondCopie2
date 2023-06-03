@@ -54,6 +54,11 @@ dependencies:
   path_provider: ^2.0.15
   flutter_cache_manager: ^3.3.0
   gallery_saver: ^2.3.2
+  intl: ^0.18.1
+  flutter_animated_dialog: ^2.0.1
+  flutter_awesome_alert_box: ^2.1.1
+  awesome_dialog: ^3.1.0
+
 
 dev_dependencies:
   flutter_test:

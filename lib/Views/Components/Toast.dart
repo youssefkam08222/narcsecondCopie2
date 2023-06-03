@@ -33,7 +33,7 @@ Widget toastM (String msg,Color color) {
               maxLines: 2,
               softWrap: true,
               overflow: TextOverflow.fade,
-              textAlign: TextAlign.left,
+              textAlign: TextAlign.center,
             ),
         )
 
