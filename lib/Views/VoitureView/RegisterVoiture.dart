@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -10,7 +9,7 @@ import '../../Globals/globals.dart';
 import '../../Models/voitureModel.dart';
 import '../../Services/firebase_api.dart';
 import '../../Services/voitureService.dart';
-import '../AlertDialog/showInfoDialog.dart';
+import '../AlertDialog/showInfoAddDocumentsDialog.dart';
 import '../Components/SelectImage.dart';
 import '../Components/Toast.dart';
 import '../Components/buildImageWithAddIcon.dart';
@@ -1380,6 +1379,7 @@ class _RegisterVoitureState extends State<RegisterVoiture> {
                         ),
                       ),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
                           Icon(Icons.data_saver_on_outlined, size: 30), // Add the desired icon here
                           SizedBox(width: 10),
@@ -1403,6 +1403,7 @@ class _RegisterVoitureState extends State<RegisterVoiture> {
                           ImmatExists= await checkVoitureSerie (selectedTypeImmatriculationValue.toString(),ImmatValueToSave);
 
                           if(ImmatExists){
+
                             setState(() {
                               ImmatExists=ImmatExists;
                             });
@@ -1410,6 +1411,14 @@ class _RegisterVoitureState extends State<RegisterVoiture> {
                               child: toastM("Changer le numero d'immatricule car il deja existe !",Colors.red),
                               gravity: ToastGravity.BOTTOM,
                               toastDuration: Duration(seconds: toastDuration),);
+                            AwesomeDialog(
+                              context: context,
+                              dialogType: DialogType.warning,
+                              animType: AnimType.scale,
+                              title: "Changer le numero d'immatricule car il deja existe !",
+                              autoHide: const Duration(seconds: 2),
+                            ).show();
+                            _focusOnPosition();
 
                           }else{
                             Future.delayed(const Duration(seconds: 1),() async {

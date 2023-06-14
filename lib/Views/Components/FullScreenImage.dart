@@ -1,17 +1,9 @@
-
-
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gallery_saver/gallery_saver.dart';
-import 'package:path/path.dart' as pathProvider;
-import 'package:path/path.dart' as path;
-import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
-
 import '../../Globals/globals.dart';
 import 'Toast.dart';
 
@@ -26,7 +18,7 @@ class FullScreenImage extends StatelessWidget {
     return null;
   }
 
-  const FullScreenImage({required this.imageUrl});
+  const FullScreenImage({super.key, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +37,7 @@ class FullScreenImage extends StatelessWidget {
                   String savePath = '${saveDir?.path}/image.jpeg';
 
 
-                  final response = await await Dio().get(imageUrl,
+                  final response = await Dio().get(imageUrl,
                       options: Options(responseType: ResponseType.bytes));
                   final File file = File(savePath);
                   await file.writeAsBytes(response.data);

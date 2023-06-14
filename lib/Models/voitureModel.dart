@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:typed_data';
+
 
 VoitureModel voitureModelJson(String str) =>
     VoitureModel.fromJson(json.decode(str));
@@ -40,6 +40,7 @@ class VoitureModel {
       required this.imgAssuranceUrl,
       required this.imgTaxUrl,
       required this.imgVisiteUrl,
+
       });
 
   factory VoitureModel.fromJson(Map<String, dynamic> json) => VoitureModel(
@@ -58,6 +59,7 @@ class VoitureModel {
         imgAssuranceUrl: json["imgAssuranceUrl"],
         imgTaxUrl: json["imgTaxUrl"],
         imgVisiteUrl: json["imgVisiteUrl"],
+
       );
 
   Map<String, dynamic> toJson() => {
@@ -77,7 +79,31 @@ class VoitureModel {
         "imgTaxUrl": imgTaxUrl,
         "imgVisiteUrl": imgVisiteUrl,
 
+
       };
+
+  static VoitureModel empty() {
+    return VoitureModel(
+      voitureId: '',
+      imgVoitureUrl: '',
+      voitureMake: '',
+      voitureMakeYear: '',
+      voitureModele: '',
+      voitureTypeSerie: '',
+      voitureSerie: '',
+      voitureCarburant: '',
+      voitureKilometrage: 0,
+      voitureNotes: '',
+      imgFaceCarteGriseUrl: '',
+      imgDosCarteGriseUrl: '',
+      imgAssuranceUrl: '',
+      imgTaxUrl: '',
+      imgVisiteUrl: '',
+
+    );
+  }
+
+
 
   String get imgvoitureurl => imgVoitureUrl;
   String get voituremake => voitureMake;
@@ -93,4 +119,39 @@ class VoitureModel {
   String get imgassuranceurl => imgAssuranceUrl;
   String get imgtaxurl => imgTaxUrl;
   String get imgvisiteurl => imgVisiteUrl;
+
 }
+
+/*void updateVoiture(VoitureModel existingVoiture, {
+    String? imgVoitureUrl,
+    String? voitureMake,
+    String? voitureMakeYear,
+    String? voitureModele,
+    String? voitureTypeSerie,
+    String? voitureSerie,
+    String? voitureCarburant,
+    int? voitureKilometrage,
+    String? voitureNotes,
+    String? imgFaceCarteGriseUrl,
+    String? imgDosCarteGriseUrl,
+    String? imgAssuranceUrl,
+    String? imgTaxUrl,
+    String? imgVisiteUrl,
+    List<FillUpModel>? voitureFillUps,
+  }) {
+    if (imgVoitureUrl != null) existingVoiture.imgVoitureUrl = imgVoitureUrl;
+    if (voitureMake != null) existingVoiture.voitureMake = voitureMake;
+    if (voitureMakeYear != null) existingVoiture.voitureMakeYear = voitureMakeYear;
+    if (voitureModele != null) existingVoiture.voitureModele = voitureModele;
+    if (voitureTypeSerie != null) existingVoiture.voitureTypeSerie = voitureTypeSerie;
+    if (voitureSerie != null) existingVoiture.voitureSerie = voitureSerie;
+    if (voitureCarburant != null) existingVoiture.voitureCarburant = voitureCarburant;
+    if (voitureKilometrage != null) existingVoiture.voitureKilometrage = voitureKilometrage;
+    if (voitureNotes != null) existingVoiture.voitureNotes = voitureNotes;
+    if (imgFaceCarteGriseUrl != null) existingVoiture.imgFaceCarteGriseUrl = imgFaceCarteGriseUrl;
+    if (imgDosCarteGriseUrl != null) existingVoiture.imgDosCarteGriseUrl = imgDosCarteGriseUrl;
+    if (imgAssuranceUrl != null) existingVoiture.imgAssuranceUrl = imgAssuranceUrl;
+    if (imgTaxUrl != null) existingVoiture.imgTaxUrl = imgTaxUrl;
+    if (imgVisiteUrl != null) existingVoiture.imgVisiteUrl = imgVisiteUrl;
+    if (voitureFillUps != null) existingVoiture.voitureFillUps = voitureFillUps;
+  }*/

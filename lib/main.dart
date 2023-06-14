@@ -1,11 +1,9 @@
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-import 'Views/VoitureView/VoitureMain.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:narcsecond/firebase_options.dart';
 
+import 'Views/VoitureView/VoitureMain.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 
 void main() async {
@@ -14,7 +12,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform
   );
 
-  FlutterError.onError=FirebaseCrashlytics.instance.recordFlutterFatalError;
+ // FlutterError.onError=FirebaseCrashlytics.instance.recordFlutterFatalError;
  /* SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.top]);
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
@@ -29,11 +27,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        localizationsDelegates: const [
+
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          //const Locale('en'),
+          Locale('fr')
+        ],
       title: 'NARC First Project', debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:  VoitureMain()
+      home:  const Scaffold(
+
+        body: VoitureMain(),
+      )
+
     );
   }
 }

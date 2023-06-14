@@ -1,8 +1,10 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 
-Future<bool?> confirmAlertDialog(String title, String desc, BuildContext context) async {
-  final result = await AwesomeDialog(
+bool result=false;
+ confirmAlertDialog(String title, String desc, BuildContext context) async {
+
+    await AwesomeDialog(
     context: context,
     keyboardAware: true,
     dismissOnBackKeyPress: false,
@@ -12,8 +14,12 @@ Future<bool?> confirmAlertDialog(String title, String desc, BuildContext context
     btnOkText: "Confirmer",
     title: title,
     desc: desc,
-    btnCancelOnPress: () {},
-    btnOkOnPress: () {},
+    btnCancelOnPress: () {
+      result = false;
+    },
+    btnOkOnPress: () {
+      result=true;
+    },
   ).show();
 
   // Return the result of the dialog

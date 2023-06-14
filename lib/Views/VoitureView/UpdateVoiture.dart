@@ -1,19 +1,16 @@
 import 'dart:io';
-import 'dart:convert' as convert;
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../Globals/globals.dart';
 import '../../Models/voitureModel.dart';
 import '../../Services/firebase_api.dart';
 import '../../Services/voitureService.dart';
-import '../AlertDialog/showInfoDialog.dart';
+import '../AlertDialog/showInfoAddDocumentsDialog.dart';
 import '../Components/SelectImage.dart';
 import '../Components/Toast.dart';
 import '../Components/buildImageWithAddIcon.dart';
@@ -72,6 +69,7 @@ class updateVoitureState extends State<updateVoiture> {
   String oldImmatNumber="";
   late File image = File("");
   String? OldSelectedTypeImmatriculationValue;
+
 
   String? validateRow(String value1, String value2) {
     if (value1.isEmpty || value2.isEmpty) {
@@ -788,7 +786,7 @@ class updateVoitureState extends State<updateVoiture> {
                                 padding: const EdgeInsets.symmetric(vertical: 0.5),
                                 child:  ImmatExists== false
                                     ? const SizedBox.shrink()
-                                    :const Text("Changer le numero car il existe deja !",
+                                    :const Text("Changer le numero d'immatricule car il existe deja !",
                                   style: TextStyle(
                                     color: Colors.redAccent,
                                     fontSize: 12.0,),)
@@ -860,7 +858,7 @@ class updateVoitureState extends State<updateVoiture> {
                                 padding: const EdgeInsets.symmetric(vertical: 0.5),
                                 child:  ImmatExists== false
                                     ? const SizedBox.shrink()
-                                    :const Text("Changer le numero car il existe deja !",
+                                    :const Text("Changer le numero d'immatricule car il existe deja !",
                                   style: TextStyle(
                                     color: Colors.redAccent,
                                     fontSize: 12.0,),)
@@ -1594,7 +1592,7 @@ class updateVoitureState extends State<updateVoiture> {
                           setState(() {
                             _saving = true;
                           });
-                          await update();
+                          await createCarToUpdate();
                         }
                         else if (OldSelectedTypeImmatriculationValue!=selectedTypeImmatriculationValue.toString() ||
                             (OldSelectedTypeImmatriculationValue==selectedTypeImmatriculationValue.toString()&& oldImmatNumber!=ImmatValueToSave)){
@@ -1620,7 +1618,7 @@ class updateVoitureState extends State<updateVoiture> {
                              ImgAssuranceUrl = ImgAssuranceUrl!.isNotEmpty ? await FirebaseStorage.instance.ref().child("$ImmatValueToSave$selectedTypeImmatriculationValue/documents/ImageAssurance.jpeg").getDownloadURL() : "";
                              ImgTaxUrl = ImgTaxUrl!.isNotEmpty ? await FirebaseStorage.instance.ref().child("$ImmatValueToSave$selectedTypeImmatriculationValue/documents/ImageTax.jpeg").getDownloadURL() : "";
                              ImgVisiteUrl = ImgVisiteUrl!.isNotEmpty ? await FirebaseStorage.instance.ref().child("$ImmatValueToSave$selectedTypeImmatriculationValue/documents/ImageVisite.jpeg").getDownloadURL() :"";
-                            await update();
+                            await createCarToUpdate();
                           }
                         }
                       }else {
@@ -1638,12 +1636,9 @@ class updateVoitureState extends State<updateVoiture> {
     );
   }
 
-  Future<void> update() async {
+  Future<void> createCarToUpdate() async {
 
       Future.delayed(const Duration(seconds: 1),() async {
-
-
-
 
         ImgVoitureUrl =  fileImgVoiture.path.isNotEmpty ? await FirebaseApi.firebaseUploadImage(fileImgVoiture, "ImageVoiture.jpeg","$ImmatValueToSave$selectedTypeImmatriculationValue") : ImgVoitureUrl;
         //ImgVoitureUrlToSave !="" ?    ImgVoitureUrl =ImgVoitureUrlToSave  : ImgVoitureUrl = ImgVoitureUrl;
