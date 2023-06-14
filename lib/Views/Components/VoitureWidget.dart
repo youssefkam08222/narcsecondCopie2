@@ -1,8 +1,11 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:narcsecond/Views/Components/CustomAnimatedButton.dart';
 import '../../Models/voitureModel.dart';
 import '../../Services/voitureService.dart';
 import '../VoitureView/DetailVoiture.dart';
+
+
+
 
 class VoitureWidget extends StatefulWidget {
   const VoitureWidget({Key? key}) : super(key: key);
@@ -21,8 +24,9 @@ class _VoitureWidgetState extends State<VoitureWidget> {
         builder: (context, AsyncSnapshot<List<VoitureModel>> snapshot) {
           //print("snapshot= "+snapshot.data.toString());
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return  const Center(
-              child: CircularProgressIndicator(),
+            return   Padding(
+              padding: EdgeInsets.only(top:MediaQuery.of(context).size.height/3),
+              child: const CircularProgressIndicator(),
             );
           }
 
@@ -55,13 +59,24 @@ class _VoitureWidgetState extends State<VoitureWidget> {
                         child: Column(
                           children: [
                             ClipRRect(
-                              borderRadius:
-                              const BorderRadius.all(Radius.circular(16.0)),
-                              child: Image.network(
-                                snapshot.data![index].imgVoitureUrl,
-                                height: 150,
-                                width: double.infinity,
-                                fit: BoxFit.cover,
+                              borderRadius: const BorderRadius.all(Radius.circular(16.0)),
+                              child: Stack(
+                                children: [
+                                  Image.network(
+                                    snapshot.data![index].imgVoitureUrl,
+                                    height: 150,
+                                    width: double.infinity,
+                                    fit: BoxFit.fill,
+                                  ),
+                                  Container(
+                                    height: 150,
+                                    width: double.infinity,
+
+                                    child:
+                                    CustomAnimatedButton(snapshot.data![index]),
+
+                                  )
+                                ],
                               ),
                             ),
                             Container(

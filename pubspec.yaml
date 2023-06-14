@@ -33,6 +33,8 @@ dependencies:
 
 
 
+
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -49,15 +51,23 @@ dependencies:
   firebase_storage: ^11.2.1
   cloud_firestore: ^4.7.1
   firebase_core: ^2.13.0
-  firebase_crashlytics: ^3.3.1
+  #firebase_crashlytics: ^3.3.1
   modal_progress_hud_nsn: ^0.3.0
   path_provider: ^2.0.15
   flutter_cache_manager: ^3.3.0
   gallery_saver: ^2.3.2
-  intl: ^0.18.1
+  intl: any
   flutter_animated_dialog: ^2.0.1
   flutter_awesome_alert_box: ^2.1.1
   awesome_dialog: ^3.1.0
+  convex_bottom_bar: ^3.2.0
+  calendar_date_picker2: ^0.5.2
+  localization: ^2.1.0
+  flutter_localizations:
+    sdk: flutter
+  syncfusion_flutter_datagrid: ^21.2.9
+
+
 
 
 dev_dependencies:
@@ -81,6 +91,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  generate: true
 
   assets:
     - assets/

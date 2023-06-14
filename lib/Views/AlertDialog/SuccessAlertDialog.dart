@@ -9,11 +9,19 @@ Future successAlertDialog(String title, String desc,BuildContext context) {
     dialogType: DialogType.success,
     showCloseIcon: true,
     title: title,
-    desc:desc,
+    titleTextStyle: TextStyle(),
+    alignment: Alignment.center,
+    body: Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Text(
+        desc,
+        textAlign: TextAlign.justify,
+        style: const TextStyle(),
+      ),
+    ),
     btnOkOnPress: () {
-      Navigator.pop(context);
     },
-    autoHide: const Duration(seconds: 10),
+    autoHide: const Duration(seconds: 5),
     btnOkIcon: Icons.check_circle,
     onDismissCallback: (type) {
       debugPrint('Dialog Dissmiss from callback $type');

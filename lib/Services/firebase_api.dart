@@ -2,16 +2,16 @@ import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
+
 import '../Models/firebase_file.dart';
 
 class FirebaseApi {
   static Future<List<String>> _getDownloadLinks(List<Reference> refs) =>
       Future.wait(refs.map((ref) => ref.getDownloadURL()).toList());
 
-  static Future<List<FirebaseFile>> listAll(String path) async {
+  static Future<List<FirebaseFile>> GetAllFireBaseStorageFiles(String path) async {
     final ref = FirebaseStorage.instance.ref(path);
     final result = await ref.listAll();
 
@@ -83,7 +83,7 @@ class FirebaseApi {
     });
 
     // Delete the folder itself
-    await folderRef.delete();
+    //await folderRef.delete();
   }
 
   static Future<String?> firebaseUploadImage(File file,String imageName,String directoryName) async {

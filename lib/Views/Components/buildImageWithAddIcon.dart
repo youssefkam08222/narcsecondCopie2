@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Widget buildImageWithAddIcon(String imagePath) {
@@ -11,10 +10,12 @@ Widget buildImageWithAddIcon(String imagePath) {
         width: double.infinity,
         fit: BoxFit.fill,
       ),
-      const Icon(
-        Icons.add_a_photo_outlined,
-        size: 50,
-        color: Colors.black,
+       Image.asset(
+         'assets/images/cameragif.gif',
+        colorBlendMode: BlendMode.dstIn,
+        width: 50,
+        height: 50,
+        color: Colors.white,
       ),
     ],
   );
