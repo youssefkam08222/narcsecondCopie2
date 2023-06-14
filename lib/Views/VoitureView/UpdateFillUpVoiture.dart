@@ -33,7 +33,6 @@ class _UpdateFillUpVoiture extends State<UpdateFillUpVoiture> {
 
   FillUpModel fillUpModel = FillUpModel.empty();
   VoitureModel voiture = VoitureModel.empty();
-
   _UpdateFillUpVoiture(v, f) {
     voiture = v;
     fillUpModel = f;
